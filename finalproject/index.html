@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Finaicial Calulator</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-6 text-center">
+          <h1>คำนวณดอกเบี้ยเงินฝากออมทรัพย์</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col text-center">
+          <div>
+            <h3>จำนวนเงินฝาก</h3>
+            <input placeholder="เงินฝาก" id="deposit_amount" />
+            <p class="text-danger" id="deposit_error"></p>
+          </div>
+          <div>
+            <h3>อัตราดอกเบี้ย</h3>
+            <input placeholder="อัตราดอกเบี้ยต่อปี" id="interest_rate" />
+            <p class="text-danger" id="interest_error"></p>
+          </div>
+          <div>
+            <h3>ระยะเวลาฝาก (วัน)</h3>
+            <input placeholder="จำนวนวัน" id="days" />
+            <p class="text-danger" id="days_error"></p>
+          </div>
+        </div>
+        <div class="col text-center">
+          <div>
+            <h3 class="text-success">ผลการคำนวณ</h3>
+          </div>
+          <div class="row">
+            <h3 class="column">ดอกเบี้ย</h3>
+            <div class="column" id="total_interest"></div>
+          </div>
+          <div class="row">
+            <h3 class="column">หักภาษี</h3>
+            <div class="column" id="total_tax"></div>
+          </div>
+          <div class="row">
+            <h3 class="column">ดอกเบี้ยรวม (สุทธิ)</h3>
+            <div class="column" id="total_result"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <button
+            type="button"
+            class="btn btn-success"
+            onclick="calculateDepositInterest()"
+          >
+            คำนวณ
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>
