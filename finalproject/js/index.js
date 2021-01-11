@@ -1,5 +1,14 @@
+(() => {
+  var taxexplain = document.getElementById('total_tax');
+  var tooltip = new bootstrap.Tooltip(taxexplain);
+})();
+
 function getValue(elemId) {
   return document.getElementById(elemId).value;
+}
+
+function setValue(elemId, value) {
+  return (document.getElementById(elemId).value = value);
 }
 
 function clearText(elemId) {
@@ -9,6 +18,7 @@ function clearText(elemId) {
 function setText(elemId, text) {
   document.getElementById(elemId).innerText = text;
 }
+
 function clearErrors() {
   clearText('deposit_error');
   clearText('interest_error');
@@ -24,25 +34,25 @@ function clearResults() {
 function inputValidator() {
   clearErrors();
   let hasError = false;
+
   let depositAmount = parseFloat(getValue('deposit_amount'));
-  console.log(depositAmount);
-  if (!depositAmount) {
-    setText('deposit_error', 'กรุณาระบุจำนวนเงินฝาก');
+  if (isNaN(depositAmount)) {
+    setText('deposit_error', 'กรุณาระบุจำนวนเงินฝากเป็นตัวเลขเท่านั้น');
     hasError = true;
   }
 
   let interestRate = parseFloat(getValue('interest_rate'));
-  console.log(interestRate);
-  if (!interestRate) {
-    setText('interest_error', 'กรุณาระบุดอกเบี้ย');
+  if (isNaN(interestRate)) {
+    setText('interest_error', 'กรุณาระบุดอกเบี้ยเป็นตัวเลขเท่านั้น');
     hasError = true;
   }
+
   let days = parseInt(getValue('days'));
-  console.log(days);
-  if (!days) {
-    setText('days_error', 'กรุณาระบุจำนวนวัน');
+  if (isNaN(days)) {
+    setText('days_error', 'กรุณาระบุจำนวนวันเป็นตัวเลขเท่านั้น');
     hasError = true;
   }
+
   return { depositAmount, interestRate, days, hasError };
 }
 
@@ -62,4 +72,10 @@ function calculateDepositInterest() {
   setText('total_interest', interest + ' บาท');
   setText('total_tax', '- ' + tax + ' บาท');
   setText('total_result', (interest - tax).toFixed(3) + ' บาท');
+}
+
+function clearAllData() {
+  setValue('deposit_amount', '');
+  setValue('interest_rate', '');
+  setValue('days', '');
 }

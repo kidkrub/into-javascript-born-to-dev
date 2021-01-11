@@ -1,48 +1,98 @@
 <html>
   <head>
-    <title>Finaicial Calulator</title>
+    <title>คำนวณดอกเบี้ยเงินฝากออมทรัพย์</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-6 text-center">
+      <div class="row justify-content-center bg-primary">
+        <div class="col-6 text-center text-white">
           <h1>คำนวณดอกเบี้ยเงินฝากออมทรัพย์</h1>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col text-center">
-          <div>
-            <h3>จำนวนเงินฝาก</h3>
-            <input placeholder="เงินฝาก" id="deposit_amount" />
-            <p class="text-danger" id="deposit_error"></p>
+      <div class="row">
+        <div class="col">
+          <div class="row justify-content-end">
+            <div class="col-5">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"
+                  >จำนวนเงินฝาก</span
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="เงินฝาก"
+                  aria-label="deposit_amount"
+                  aria-describedby="basic-addon1"
+                  id="deposit_amount"
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <p class="text-danger" id="deposit_error"></p>
+            </div>
           </div>
-          <div>
-            <h3>อัตราดอกเบี้ย</h3>
-            <input placeholder="อัตราดอกเบี้ยต่อปี" id="interest_rate" />
-            <p class="text-danger" id="interest_error"></p>
+          <div class="row justify-content-end">
+            <div class="col-5">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2"
+                  >อัตราดอกเบี้ย</span
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="อัตราดอกเบี้ยต่อปี"
+                  aria-label="interest_rate"
+                  aria-describedby="basic-addon2"
+                  id="interest_rate"
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <p class="text-danger" id="interest_error"></p>
+            </div>
           </div>
-          <div>
-            <h3>ระยะเวลาฝาก (วัน)</h3>
-            <input placeholder="จำนวนวัน" id="days" />
-            <p class="text-danger" id="days_error"></p>
+          <div class="row justify-content-end">
+            <div class="col-5">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3"
+                  >ระยะเวลาฝาก (วัน)</span
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="ระยะเวลาฝาก (วัน)"
+                  aria-label="days"
+                  aria-describedby="basic-addon3"
+                  id="days"
+                />
+              </div>
+              <p><small class="text-muted">* เศษของวันจะถูกปัดลง</small></p>
+            </div>
+            <div class="col-4"><p class="text-danger" id="days_error"></p></div>
           </div>
         </div>
         <div class="col text-center">
           <div>
             <h3 class="text-success">ผลการคำนวณ</h3>
           </div>
-          <div class="row">
-            <h3 class="column">ดอกเบี้ย</h3>
-            <div class="column" id="total_interest"></div>
+          <div class="row justify-content-center">
+            <h3 class="col-4">ดอกเบี้ย</h3>
+            <div class="col-4 offset-2" id="total_interest"></div>
           </div>
-          <div class="row">
-            <h3 class="column">หักภาษี</h3>
-            <div class="column" id="total_tax"></div>
+          <div class="row justify-content-center">
+            <h3 class="col-4">หักภาษี</h3>
+            <div
+              class="col-4 offset-2"
+              id="total_tax"
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              title="หักภาษี 15% เมื่อดอกเบี้ยเกิน 20,000"
+            ></div>
           </div>
-          <div class="row">
-            <h3 class="column">ดอกเบี้ยรวม (สุทธิ)</h3>
-            <div class="column" id="total_result"></div>
+          <div class="row justify-content-center">
+            <h3 class="col-4">ดอกเบี้ยรวม (สุทธิ)</h3>
+            <div class="col-4 offset-2" id="total_result"></div>
           </div>
         </div>
       </div>
@@ -55,10 +105,17 @@
           >
             คำนวณ
           </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            onclick="clearAllData()"
+          >
+            ล้างข้อมูล
+          </button>
         </div>
       </div>
     </div>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>
